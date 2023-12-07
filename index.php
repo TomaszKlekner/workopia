@@ -7,8 +7,39 @@ $body = 'In this course, you will learn the fundamentals of the PHP language';
 
 $firstName = 'John';
 $lastName = 'Doe';
-
 $fullName = $firstName . ' ' . $lastName;
+
+// Implicit Type Conversion
+$number1 = 5;
+$number2 = 10;
+$number3 = '20';
+$fruit = 'apple';
+$bool1 = true;
+$bool2 = false;
+$null = null;
+
+$result = $number1 + $number2;  // int
+$result = $number1 + $number3;  // int (string to int)
+$result = $number3 + $number3;  // int (string to int)
+$result = $number1 . $number2;  // string (int to string)
+// $result = $fruit + $number2; // Error
+$result = $number1 + $bool1;    // int (bool to int) true converted to 1
+$result = $number1 + $bool2;    // int (bool to int) false converted to 0
+$result = $number3 + $bool1;    // int (string to int) true converted to 1
+$result = $number3 + $bool2;    // int (string to int) false converted to 0
+$result = $number1 + $null;     // int (null to int) null converted to 0
+$result = $bool1 + $null;       // int (null to int) null converted to 0
+$result = $bool2 + $null;       // int (null to int) null converted to 0
+
+// Explicit Type Conversion
+$result = (string) $number1;    // int to string
+$result = (int) $number3;       // string to int
+$result = (bool) $number1;      // int to bool
+$result = (bool) $number2;      // int to bool
+$result = (bool) $number3;      // string to bool
+
+
+var_dump($result);
 
 ?>
 
