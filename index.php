@@ -3,48 +3,12 @@ $title = 'Learn PHP From Scratch';
 $heading = 'Welcome To The Course';
 $body = 'In this course, you will learn the fundamentals of the PHP language';
 
-// Data Types
-// String
-$name = 'John Doe';
-var_dump($name);
-echo '<br>';
+// Strings
 
-// Integer
-$age = 35;
-var_dump($age);
-echo '<br>';
+$firstName = 'John';
+$lastName = 'Doe';
 
-// Float
-$rating = 4.6;
-var_dump($rating);
-echo '<br>';
-
-// Boolean
-$isLoaded = false;
-var_dump($isLoaded);
-echo '<br>';
-
-// Array
-$friends = ['John', 'Jane', 'Joe'];
-var_dump($friends);
-echo '<br>';
-
-// Object
-$person = new stdClass();
-$person->firstName = 'John';
-$person->lastName = 'Doe';
-var_dump($person);
-echo '<br>';
-
-// Null
-$car = null;
-var_dump($car);
-echo '<br>';
-
-// Resource
-$file = fopen('index.php', 'r');
-var_dump($file);
-echo '<br>';
+$fullName = $firstName . ' ' . $lastName;
 
 ?>
 
@@ -68,6 +32,8 @@ echo '<br>';
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold mb-4"><?= $heading ?></h2>
       <p><?= $body ?></p'>
+      <p><?php echo "Hello, my name is $fullName"; ?></p>
+      <p><?= 'Hello, my name is ' . $fullName; ?></p>
     </div>
   </div>
 </body>
