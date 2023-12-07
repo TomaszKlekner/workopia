@@ -2,6 +2,50 @@
 $title = 'Learn PHP From Scratch';
 $heading = 'Welcome To The Course';
 $body = 'In this course, you will learn the fundamentals of the PHP language';
+
+// Data Types
+// String
+$name = 'John Doe';
+var_dump($name);
+echo '<br>';
+
+// Integer
+$age = 35;
+var_dump($age);
+echo '<br>';
+
+// Float
+$rating = 4.6;
+var_dump($rating);
+echo '<br>';
+
+// Boolean
+$isLoaded = false;
+var_dump($isLoaded);
+echo '<br>';
+
+// Array
+$friends = ['John', 'Jane', 'Joe'];
+var_dump($friends);
+echo '<br>';
+
+// Object
+$person = new stdClass();
+$person->firstName = 'John';
+$person->lastName = 'Doe';
+var_dump($person);
+echo '<br>';
+
+// Null
+$car = null;
+var_dump($car);
+echo '<br>';
+
+// Resource
+$file = fopen('index.php', 'r');
+var_dump($file);
+echo '<br>';
+
 ?>
 
 <!DOCTYPE html>
