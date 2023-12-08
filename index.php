@@ -4,58 +4,39 @@ $heading = 'Welcome To The Course';
 $body = 'In this course, you will learn the fundamentals of the PHP language';
 
 $output = null;
+$string = "Hello World";
 
-$num1 = 20;
-$num2 = 10;
+// String functions
 
-// Basic Math Operators
-$output = '$num1 + $num2 = ' . $num1 + $num2;
-$output = '$num1 - $num2 = ' . $num1 - $num2;
-$output = '$num1 * $num2 = ' . $num1 * $num2;
-$output = '$num1 / $num2 = ' . $num1 / $num2;
-$output = '$num1 % $num2 = ' . $num1 % $num2;
+// strlen()
+$output = strlen($string);
 
-// Assignment Operators
-$num3 = 10;
-// $num3 = $num3 + 20;
-// $num3 += 20; // $num3 = $num3 + 10;
-$num3 -= 20; // $num3 = $num3 + 10;
-$output = $num3;
+// str_word_count()
+$output = str_word_count($string);
 
-// Build-in PHP Functions
-// rand()
-$output = rand();
-$output = getrandmax();
-$output = rand(1, 10);
+// strpos()
+$output = strpos($string, "World");
 
-// round()
-$output = round(4.2);
+// Get specific character by index
+$output = $string[4];
 
-// ceil()
-$output = ceil(4.5);
+// substr()
+$output = substr($string, 6, 5);
 
-// floor()
-$output = floor(4.5);
+// str_replace()
+$output = str_replace("World", "Universe", $string);
 
-// sqrt()
-$output = sqrt(64);
+// strtolower()
+$output = strtolower($string);
 
-// pi()
-$output = pi();
+// strtoupper()
+$output = strtoupper($string);
 
-// abs()
-$output = abs(-100.38);
+// ucwords()
+$output = ucwords($string);
 
-// max()
-$output = max(1, 2, 3, 50);
-$output = max([1, 25, 3, 21]);
-
-// min()
-$output = min(11, 2, 3, 50);
-$output = min([11, 25, 3, 21]);
-
-// number_format()
-$output = number_format(1234567.89123, 2, ',', '.'); // format currencies for example
+// trim()
+$output = trim('  Hello World!!   ');
 
 ?>
 
