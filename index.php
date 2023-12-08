@@ -20,8 +20,43 @@ $num3 = 10;
 // $num3 = $num3 + 20;
 // $num3 += 20; // $num3 = $num3 + 10;
 $num3 -= 20; // $num3 = $num3 + 10;
-
 $output = $num3;
+
+// Build-in PHP Functions
+// rand()
+$output = rand();
+$output = getrandmax();
+$output = rand(1, 10);
+
+// round()
+$output = round(4.2);
+
+// ceil()
+$output = ceil(4.5);
+
+// floor()
+$output = floor(4.5);
+
+// sqrt()
+$output = sqrt(64);
+
+// pi()
+$output = pi();
+
+// abs()
+$output = abs(-100.38);
+
+// max()
+$output = max(1, 2, 3, 50);
+$output = max([1, 25, 3, 21]);
+
+// min()
+$output = min(11, 2, 3, 50);
+$output = min([11, 25, 3, 21]);
+
+// number_format()
+$output = number_format(1234567.89123, 2, ',', '.'); // format currencies for example
+
 ?>
 
 <!DOCTYPE html>
