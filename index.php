@@ -4,39 +4,57 @@ $heading = 'Welcome To The Course';
 $body = 'In this course, you will learn the fundamentals of the PHP language';
 
 $output = null;
-$string = "Hello World";
 
-// String functions
+// Dates and Time
+/*
+- `` - The year
+- `` - The month
+- `` - The day
+- `` - The day of the week short name
+- `` - The day of the week long name
+- `` - The hour
+- `` - The minute
+- `` - The second
+- `` - AM/PM
+ */
 
-// strlen()
-$output = strlen($string);
+// Date
 
-// str_word_count()
-$output = str_word_count($string);
+// Get Year
+$output = date("Y");
 
-// strpos()
-$output = strpos($string, "World");
+// Get Year with timestamp
+$output = date("Y", 936345600);
 
-// Get specific character by index
-$output = $string[4];
+// Get Year with timestamp from strtotime
+$output = date("Y", strtotime('1999-09-01'));
 
-// substr()
-$output = substr($string, 6, 5);
+// Get Month
+$output = date('m');
 
-// str_replace()
-$output = str_replace("World", "Universe", $string);
+// Get Day
+$output = date('d');
+$output = date('D');
+$output = date('l');
 
-// strtolower()
-$output = strtolower($string);
+// get Whole date
+$output = date('Y-m-d');
+$output = date('d-m-Y');
 
-// strtoupper()
-$output = strtoupper($string);
+// Get hour
+$output = date('h');
 
-// ucwords()
-$output = ucwords($string);
+// Get minute
+$output = date('i');
 
-// trim()
-$output = trim('  Hello World!!   ');
+// Get second
+$output = date('s');
+
+// Get am/pmM
+$output = date('a');
+
+// Get full date and time
+$output = date('Y-m-d h:i:s a');
 
 ?>
 
