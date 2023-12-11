@@ -5,23 +5,41 @@ $body = 'In this course, you will learn the fundamentals of the PHP language';
 
 $output = null;
 
-$user = [
-  'name' => 'John',
-  'email' => 'john@mail.com',
-  'password' => '123456!',
-  'hobbies' => ['Tennis', 'Video Games'],
+$fruits = [
+  ["Apple", "Red"],
+  ["Orange", "Orange"],
+  ["Banana", "Yellow"],
 ];
 
-$output = $user['name'];
-$output = $user['email'];
-// $output = $user['email2']; // Warning: Undefined array key "email2"
+$output = $fruits[0][0];
 
-$output = $user['hobbies'][0];
+$fruits[] = ['Grape', 'Purple'];
 
-$user['address'] = '123 Main Str';
-unset($user['address']);
+$users = [
+  ['name' => 'John ', 'email' => 'john@gmail.com', 'password' => '123456!'],
+  ['name' => 'Mary ', 'email' => 'mary@gmail.com', 'password' => '335588!'],
+  ['name' => 'Ken ', 'email' => 'ken@gmail.com', 'password' => '6699000!'],
+];
 
+$output = $users[1]['email'];
 
+// Add a user
+$users[] = ['name' => 'Tom', "email" => "email@gmail.com", "password" => "123123!"];
+
+// Push a user to the end of the array
+array_push($users, ['name' => 'Adam', "email" => "adam@gmail.com", "password" => "123123!"]);
+
+// Remove last user
+array_pop($users);
+
+// Remove first user
+array_shift($users);
+
+// Remove a specific user
+unset($users[0]);
+
+// Count users
+$output = count($users);
 ?>
 
 <!DOCTYPE html>
@@ -44,10 +62,10 @@ unset($user['address']);
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold mb-4"><?= $heading ?></h2>
       <p><?php echo $output; ?></p>
-      <h2 class="text-xl font-semibold my-4">User Array:</h2>
+      <h2 class="text-xl font-semibold my-4">Users Array:</h2>
       <p>
       <pre>
-          <?php print_r($user); ?>
+          <?php print_r($users); ?>
         </pre>
       </p>
     </div>
