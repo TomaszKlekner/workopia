@@ -5,57 +5,42 @@ $body = 'In this course, you will learn the fundamentals of the PHP language';
 
 $output = null;
 
-// Dates and Time
-/*
-- `` - The year
-- `` - The month
-- `` - The day
-- `` - The day of the week short name
-- `` - The day of the week long name
-- `` - The hour
-- `` - The minute
-- `` - The second
-- `` - AM/PM
- */
+// Arrays
 
-// Date
+$names = array('John', 'Jack', 'Jill');
+$numbers = [1, 2, 3, 4.5, 6];
 
-// Get Year
-$output = date("Y");
+function inspect($value)
+{
+  echo "<pre>";
+  var_dump($value);
+  echo "</pre>";
+}
 
-// Get Year with timestamp
-$output = date("Y", 936345600);
+// inspect($names);
+// inspect($numbers);
 
-// Get Year with timestamp from strtotime
-$output = date("Y", strtotime('1999-09-01'));
+// print_r($numbers);
 
-// Get Month
-$output = date('m');
+// Warning: Array to string conversion
+// echo $names;
 
-// Get Day
-$output = date('d');
-$output = date('D');
-$output = date('l');
+// echo $names[1];
+// echo $numbers[3];
 
-// get Whole date
-$output = date('Y-m-d');
-$output = date('d-m-Y');
+// Add element to array
+$numbers[6] = 700;
+$numbers[] = 701;
 
-// Get hour
-$output = date('h');
+// Update element in array
+$numbers[3] = 220;
 
-// Get minute
-$output = date('i');
+// Delete element in array
+unset($numbers[3]); // removes value and index
+$numbers = array_values($numbers); // reindexes the array
 
-// Get second
-$output = date('s');
 
-// Get am/pmM
-$output = date('a');
-
-// Get full date and time
-$output = date('Y-m-d h:i:s a');
-
+inspect($numbers);
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +62,7 @@ $output = date('Y-m-d h:i:s a');
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold mb-4"><?= $heading ?></h2>
-      <p><?= $output ?></p>
+
     </div>
   </div>
 </body>
