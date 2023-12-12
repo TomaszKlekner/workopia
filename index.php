@@ -62,3 +62,27 @@ echo "<p>Remove last element</p>";
 echo "<pre>";
 var_dump($colors);
 echo "</pre>";
+
+
+/*
+  Challenge 3: Job listing array
+
+  1. Create a multi-dimensional array of associative arrays of 3 job listings with fields id, job_title, company, contact_email, and contact_phone. Also add an array field for skills. The skills array should ba an array of strings with each skill as person has.
+  2. Create a new listing using the `array_push()` function. THe new listing should have the same fields as the others.
+  3. Print out the job_title of the second job listing in the array.
+  4. Print out the first skill of the third job listing in the array.
+*/
+
+echo '<h3>Job listing Array</h3>';
+
+$job_listing = [
+  ["id" => 1, "job_title" => "PHP Developer", "contact_email" => "contact@mail.com", "contact_phone" => "555-555-555", "skills" => [
+    "PHP", "MySql", "HTML", "CSS", "JavaScript"
+  ]],
+  ["id" => 2, "job_title" => "UI Developer", "contact_email" => "contact.me@mail.com", "contact_phone" => "222-555-222", "skills" => [
+    "HTML", "CSS", "JavaScript", "React.js", "TypeScript"
+  ]],
+  ["id" => 3, "job_title" => "DataBase Developer", "contact_email" => "new.contact@mail.com", "contact_phone" => "333-111-777", "skills" => [
+    "MongoDB", "Azure Devops"
+  ]],
+];
