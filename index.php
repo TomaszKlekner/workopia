@@ -75,14 +75,42 @@ echo "</pre>";
 
 echo '<h3>Job listing Array</h3>';
 
+// 1.
 $job_listing = [
-  ["id" => 1, "job_title" => "PHP Developer", "contact_email" => "contact@mail.com", "contact_phone" => "555-555-555", "skills" => [
+  ["id" => 1, "job_title" => "PHP Developer", "company" => "ABC", "contact_email" => "contact@mail.com", "contact_phone" => "555-555-555", "skills" => [
     "PHP", "MySql", "HTML", "CSS", "JavaScript"
   ]],
-  ["id" => 2, "job_title" => "UI Developer", "contact_email" => "contact.me@mail.com", "contact_phone" => "222-555-222", "skills" => [
+  ["id" => 2, "job_title" => "UI Developer", "company" => "XYZ", "contact_email" => "contact.me@mail.com", "contact_phone" => "222-555-222", "skills" => [
     "HTML", "CSS", "JavaScript", "React.js", "TypeScript"
   ]],
-  ["id" => 3, "job_title" => "DataBase Developer", "contact_email" => "new.contact@mail.com", "contact_phone" => "333-111-777", "skills" => [
+  ["id" => 3, "job_title" => "DataBase Developer", "company" => "TTT", "contact_email" => "new.contact@mail.com", "contact_phone" => "333-111-777", "skills" => [
     "MongoDB", "Azure Devops"
   ]],
 ];
+
+echo "<pre>";
+print_r($job_listing);
+echo "</pre>";
+
+// 2.
+echo '<h3>Updated Job listing Array</h3>';
+
+array_push($job_listing, ["id" => 4, "job_title" => "Web Developer", "company" => "CCC", "contact_email" => "braND.contact@mail.com", "contact_phone" => "222-111-777", "skills" => [
+  "MongoDB", "Azure Devops"
+]]);
+
+echo "<pre>";
+print_r($job_listing);
+echo "</pre>";
+
+echo '<h3>Print out the job_title of the second job listing in the array</h3>';
+// 3.
+echo "<pre>";
+print_r($job_listing[1]['job_title']);
+echo "</pre>";
+
+echo '<h3>Print out the first skill of the third job listing in the array</h3>';
+// 4.
+echo "<pre>";
+print_r($job_listing[3]['skills'][0]);
+echo "</pre>";
