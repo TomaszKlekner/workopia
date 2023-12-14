@@ -1,3 +1,15 @@
+<?php
+$names = ['John Doe', 'Tom Ford', 'Kim Bass', 'Dave Gray'];
+
+$users = [
+  ['name' => 'John', 'email' => 'john@email.com'],
+  ['name' => 'jack', 'email' => 'jack@email.com'],
+  ['name' => 'Kate', 'email' => 'kate@email.com'],
+  ['name' => 'Aaron', 'email' => 'aaron@email.com'],
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +18,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>PHP From Scratch</title>
-  <style>
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 100px);
-      grid-gap: 5px;
-    }
-
-    .grid-item {
-      width: 100px;
-      height: 100px;
-      background-color: lightblue;
-      text-align: center;
-      line-height: 100px;
-    }
-  </style>
 </head>
 
 <body class="bg-gray-100">
@@ -32,16 +29,34 @@
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6">
       <h2 class="text-2xl font-semibold mb-4">Nested Loops</h2>
+      <!-- Output -->
+      <h3 class="text-xl font-semibold mb-4">Using a for loop</h3>
+      <ul class="mb-6">
+        <?php for ($i = 0; $i < count($names); $i++) : ?>
+          <li><?= $names[$i] ?></li>
+        <?php endfor; ?>
+      </ul>
 
-      <div class="grid-container">
-        <?php for ($i = 0; $i < 5; $i++) : ?>
-          <?php for ($j = 0; $j < 5; $j++) : ?>
-            <div class="grid-item">
-              <?= 'i: ' . $i . ' - ' . 'j: ' . $j ?>
-            </div>
-          <?php endfor ?>
-        <?php endfor ?>
-      </div>
+      <h3 class="text-xl font-semibold mb-4">Using a forEach loop</h3>
+      <ul class="mb-6">
+        <?php foreach ($names as $name) : ?>
+          <li><?= $name ?></li>
+        <?php endforeach; ?>
+      </ul>
+
+      <h3 class="text-xl font-semibold mb-4">Using a forEach loop with index</h3>
+      <ul class="mb-6">
+        <?php foreach ($names as $index => $name) : ?>
+          <li><?= $index . ": " . $name ?></li>
+        <?php endforeach; ?>
+      </ul>
+
+      <h3 class="text-xl font-semibold mb-4">Using a forEach loop with index</h3>
+      <ul class="mb-6">
+        <?php foreach ($users as $user) : ?>
+          <li><?= $user['name'] . " " . $user['email'] ?></li>
+        <?php endforeach; ?>
+      </ul>
     </div>
   </div>
 </body>
