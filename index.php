@@ -17,7 +17,15 @@ $listing = [
     "location" => "New York",
     "tags" => ["Digital Marketing", "Social Media", "SEO"],
   ]
-]
+];
+
+// $favoriteColor = 'red';
+// $color = isset($favoriteColor) ? $favoriteColor : "blue";
+
+// Null Coalescing Operator
+$color = $favoriteColor ?? "blue";
+
+echo $color;
 
 ?>
 
