@@ -1,23 +1,6 @@
 <?php
-$listing = [
-  [
-    "id" => "1",
-    "title" => "Software Engineer",
-    "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum! Aperiam omnis ea sequi eos ullam praesentium eveniet accusamus fugit?",
-    "salary" => "80000",
-    "location" => "San Francisco",
-    "tags" => ["Software Development", "Java", "Python"],
-  ],
-  [
-    "id" => "2",
-    "title" => "Marketing Specialist",
-    "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum! Aperiam omnis ea sequi eos ullam praesentium eveniet accusamus fugit?",
-    "salary" => "60000",
-    "location" => "New York",
-    "tags" => ["Digital Marketing", "Social Media", "SEO"],
-  ]
-]
-
+$first = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+$second = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 ?>
 
 <!DOCTYPE html>
@@ -38,23 +21,14 @@ $listing = [
   </header>
 
   <div class="container mx-auto p-4 mt-4 col-auto">
+    <h2 class="text-2xl font-semibold mb-4">Challenge 1: Multiplication Table</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
-      <?php foreach ($listing as $job) : ?>
+      <?php foreach ($first as $f => $f_index) : ?>
         <div class="bg-white rounded-lg shadow-md p-6">
-          <h2 class="text-2xl font-semibold mb-4"><?= $job['title'] ?></h2>
-          <p class="inline-block text-l mb-4"><?= $job['description'] ?></p>
-          <p>
-            <span class="inline-block text-l font-semibold mb-2">Salary:</span>
-            <?= $job['salary'] ?>
-          </p>
-          <p>
-            <span class="inline-block text-l font-semibold mb-2">Location:</span>
-            <?= $job['location'] ?>
-          </p>
-          <p>
-            <span class="inline-block text-l font-semibold mb-2">Tags:</span>
-            <?= implode(", ", $job['tags'])  ?>
-          </p>
+          <?php foreach ($second as $s => $s_index) : ?>
+
+            <p><?php echo $f_index . " X " . $s_index . " = " . ($first[$f] * $second[$s]) . '<br />'; ?></p>
+          <?php endforeach; ?>
         </div>
       <?php endforeach; ?>
     </div>
