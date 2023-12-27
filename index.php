@@ -57,6 +57,45 @@ $second = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       </div>
     </div>
   </div>
+
+
+  <div class="container mx-auto p-4 mt-4 col-auto">
+    <h2 class="text-2xl font-semibold mb-4">
+      Challenge 3: Student Average Grade
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <?php
+        $students = [
+          [
+            "id" => 1,
+            "name" => "John Smith",
+            "grades" => [3.5, 4.25, 1.85, 5.05, 2.95],
+          ],
+          [
+            "id" => 2,
+            "name" => "Adam Jones",
+            "grades" => [4.5, 4.25, 1.15, 5.05, 3.35],
+          ],
+          [
+            "id" => 3,
+            "name" => "Mark Grayson",
+            "grades" => [2.5, 3.25, 4.85, 4.75, 3.15],
+          ],
+          [
+            "id" => 4,
+            "name" => "Anna McDough",
+            "grades" => [3.5, 2.25, 4.85, 2.05, 3.95],
+          ],
+        ];
+
+        foreach ($students as $index => $student) {
+          echo "<strong>Student</strong>: " . $student['name'] . "<br /><strong>Grade</strong>: " . array_sum($student['grades']) . (count($students) == $index + 1 ? "" : "<br /><br />");
+        }
+        ?>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
