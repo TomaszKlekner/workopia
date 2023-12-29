@@ -1,13 +1,3 @@
 <?php
 
-// Arrow functions
-$add = fn ($a, $b) => $a + $b;
-
-echo $add(2, 2);
-
-// Arrow functions in callbacks
-$numbers = [1, 2, 3, 4, 5];
-
-$squaredNumbers = array_map(fn ($number) => $number * $number, $numbers);
-
-print_r($squaredNumbers);
+// Object Oriented Programming
