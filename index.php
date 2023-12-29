@@ -4,7 +4,7 @@ $listing = [
     "id" => "1",
     "title" => "Software Engineer",
     "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum! Aperiam omnis ea sequi eos ullam praesentium eveniet accusamus fugit?",
-    "salary" => "80000",
+    "salary" => "65000",
     "location" => "San Francisco",
     "tags" => ["Software Development", "Java", "Python"],
   ],
@@ -28,7 +28,7 @@ $listing = [
     "id" => "4",
     "title" => "Marketing Specialist",
     "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum! Aperiam omnis ea sequi eos ullam praesentium eveniet accusamus fugit?",
-    "salary" => "60000",
+    "salary" => "63000",
     "location" => "New York",
     "tags" => ["Digital Marketing", "Social Media", "SEO"],
   ],
@@ -44,7 +44,7 @@ $listing = [
     "id" => "6",
     "title" => "Marketing Specialist",
     "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum! Aperiam omnis ea sequi eos ullam praesentium eveniet accusamus fugit?",
-    "salary" => "60000",
+    "salary" => "48000",
     "location" => "New York",
     "tags" => ["Digital Marketing", "Social Media", "SEO"],
   ],
@@ -76,6 +76,15 @@ function highlightTags($tags, $searchTerm)
   $tagString = implode(", ", $tags);
   return str_replace($searchTerm, "<span class='bg-yellow-200 px-1 rounded'>{$searchTerm}</span>", $tagString);
 };
+
+function countAverageSalary($input)
+{
+  $sum = 0;
+  for ($i = 0; $i < count($input); $i++) {
+    $sum += $input[$i]['salary'];
+  }
+  return $sum / count($input);
+}
 ?>
 
 <!DOCTYPE html>
@@ -94,6 +103,12 @@ function highlightTags($tags, $searchTerm)
       <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
     </div>
   </header>
+
+  <div class="container mx-auto p-4 mt-4 col-auto">
+    <div class="bg-green-200 rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold">Average salary: <?= formatSalary(countAverageSalary($listing)); ?></h2>
+    </div>
+  </div>
 
   <div class="container mx-auto p-4 mt-4 col-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
