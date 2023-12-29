@@ -1,28 +1,25 @@
 <?php
 
-// Constants - global
-define("APP_NAME", "Hostinger");
-define("APP_VERSION", "1.0.1");
+// Types in PHP
 
-echo APP_NAME;
-echo "<br />";
-echo APP_VERSION;
-echo "<br /><br />";
+// Turn strict types on
+declare(strict_types=1);
 
-const DB_NAME = "mydb";
-const DB_HOST = "localhost";
-
-echo DB_NAME . " " . DB_HOST;
-echo "<br /><br />";
-
-function run()
+function getSum(int $a, int $b): int
 {
-  // Local function scope
-  echo APP_NAME . " " . DB_NAME . " " . DB_HOST;
+  return $a + $b;
 }
 
-run();
+// Fatal error: Uncaught TypeError: getSum(): Argument #1 ($a) must be of type int, string given,
+// echo getSum("1", 1);
+echo getSum(1, 1);
 
-// Try to update a Constant - get an error
-define("APP_NAME", "Hostinger2");
-const DB_NAME = "newdb";
+echo "<br /><br />";
+
+// Use void if no return value is expected
+function greeting(string $name): void
+{
+  echo "Hello " . $name;
+}
+
+greeting("Tomek");
