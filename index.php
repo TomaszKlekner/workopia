@@ -1,33 +1,38 @@
 <?php
 
-function add($a = 1, $b = 1)
+// Global scope
+$name = "Alice";
+
+function sayHello($name)
 {
-  return $a + $b;
+  // Local scope
+  echo "Hello " . $name;
 }
 
-echo add(2, 2);
-echo '<br />';
-echo add();
-echo '<br />';
+echo sayHello($name);
+echo "<br /><br />";
 
-function sayHello($name = "World")
+function sayHello2()
 {
-  return "Hello " . $name;
+  // Use globally scoped variables
+  global $name;
+  // Local scope
+  // Reassign a variable
+  $name = "Bob"; // overwrites the global variable
+  echo "Hello " . $name;
 }
 
-echo sayHello("Tomek");
-echo '<br />';
-echo  sayHello();
-
-// Splat operator
-function addAll(...$numbers)
+function sayGoodbye()
 {
-  $total = 0;
-  foreach ($numbers as $number) {
-    $total += $number;
-  }
-  return $total;
+  $names = ["Jack", "Jill"];
+  echo "Goodbye " . $names[0];
 }
 
-echo '<br />';
-echo addAll(1, 2, 3, 4, 5, 6, 7);
+echo $name;
+echo "<br /><br />";
+echo sayHello2();
+echo "<br /><br />";
+echo $name;
+echo "<br /><br />";
+echo sayGoodbye();
+echo $names[1];
