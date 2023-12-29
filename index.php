@@ -1,38 +1,28 @@
 <?php
 
-// Global scope
-$name = "Alice";
+// Constants - global
+define("APP_NAME", "Hostinger");
+define("APP_VERSION", "1.0.1");
 
-function sayHello($name)
+echo APP_NAME;
+echo "<br />";
+echo APP_VERSION;
+echo "<br /><br />";
+
+const DB_NAME = "mydb";
+const DB_HOST = "localhost";
+
+echo DB_NAME . " " . DB_HOST;
+echo "<br /><br />";
+
+function run()
 {
-  // Local scope
-  echo "Hello " . $name;
+  // Local function scope
+  echo APP_NAME . " " . DB_NAME . " " . DB_HOST;
 }
 
-echo sayHello($name);
-echo "<br /><br />";
+run();
 
-function sayHello2()
-{
-  // Use globally scoped variables
-  global $name;
-  // Local scope
-  // Reassign a variable
-  $name = "Bob"; // overwrites the global variable
-  echo "Hello " . $name;
-}
-
-function sayGoodbye()
-{
-  $names = ["Jack", "Jill"];
-  echo "Goodbye " . $names[0];
-}
-
-echo $name;
-echo "<br /><br />";
-echo sayHello2();
-echo "<br /><br />";
-echo $name;
-echo "<br /><br />";
-echo sayGoodbye();
-echo $names[1];
+// Try to update a Constant - get an error
+define("APP_NAME", "Hostinger2");
+const DB_NAME = "newdb";
