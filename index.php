@@ -1,25 +1,13 @@
 <?php
 
-// Callback functions
+// Arrow functions
+$add = fn ($a, $b) => $a + $b;
+
+echo $add(2, 2);
+
+// Arrow functions in callbacks
 $numbers = [1, 2, 3, 4, 5];
 
-$square = function ($number) {
-  return $number * $number;
-};
+$squaredNumbers = array_map(fn ($number) => $number * $number, $numbers);
 
-$squaredNumbers = array_map($square, $numbers);
-
-// print_r($squaredNumbers);
-
-// Custom callback example
-function applyCallback($callback, $value)
-{
-  return $callback($value);
-}
-
-$double = function ($number) {
-  return $number * 2;
-};
-
-$result = applyCallback($double, 5);
-echo $result;
+print_r($squaredNumbers);
