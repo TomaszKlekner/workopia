@@ -1,29 +1,25 @@
 <?php
 
-// Anonymous functions
+// Callback functions
+$numbers = [1, 2, 3, 4, 5];
+
 $square = function ($number) {
   return $number * $number;
 };
 
-$result = $square(5);
+$squaredNumbers = array_map($square, $numbers);
 
-echo $result;
-echo "<br /><br />";
+// print_r($squaredNumbers);
 
-// Closure
-function createCounter()
+// Custom callback example
+function applyCallback($callback, $value)
 {
-  $count = 0;
+  return $callback($value);
+}
 
-  $counter = function () use (&$count) {
-    return ++$count;
-  };
-
-  return $counter;
+$double = function ($number) {
+  return $number * 2;
 };
 
-$counter = createCounter();
-echo $counter() . "<br />";
-echo $counter() . "<br />";
-echo $counter() . "<br />";
-echo $counter() . "<br />";
+$result = applyCallback($double, 5);
+echo $result;
