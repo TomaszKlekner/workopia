@@ -7,6 +7,7 @@ class User
 {
   public $name;
   public $email;
+  private $status = 'active';
 
   public function __construct($name, $email)
   {
@@ -16,7 +17,19 @@ class User
 
   public function login()
   {
-    echo $this->name . " logged in.";
+    echo $this->name . " logged in.<br />";
+  }
+
+  // Getter
+  public function getStatus()
+  {
+    echo $this->status;
+  }
+
+  // Setter
+  public function setStatus($status)
+  {
+    $this->status = $status;
   }
 }
 
@@ -24,5 +37,6 @@ class User
 $user_01 = new User("Tomasz", "tomasz@email.com");
 
 $user_01->login();
-echo "<br />.";
-var_dump($user_01);
+echo "<br />";
+$user_01->setStatus("inactive");
+$user_01->getStatus();
