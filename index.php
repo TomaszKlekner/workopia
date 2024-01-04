@@ -1,41 +1,66 @@
 <?php
 
-// Object Oriented Programming
-
-// Challenge 1
-class Article
+// Abstract Classes
+abstract class Shape
 {
-  private $title;
-  private $content;
-  private $published = false;
+  protected $name;
 
+  // Abstract method
+  abstract public function calculateArea();
 
-  function __construct($title, $content)
+  public function __construct($name)
   {
-    $this->title = $title;
-    $this->content = $content;
+    $this->name = $name;
   }
 
-  function publish()
+  // Concrete method
+  public function getName()
   {
-    return $this->published = true;
-  }
-
-  function isPublished()
-  {
-    return $this->published;
+    return $this->name;
   }
 }
 
-$article_one = new Article("Article One", "Lorem ipsum, dolor sit amet consectetur adipisicing elit.");
-$article_two = new Article("Article Two", "Voluptate praesentium omnis corporis necessitatibus?");
+class Circle extends Shape
+{
+  private $radius;
 
-$article_one->publish();
+  public function __construct($name, $radius)
+  {
+    parent::__construct($name);
+    $this->radius = $radius;
+  }
+
+  public function calculateArea()
+  {
+    return pi() * pow($this->radius, 2);
+  }
+}
+
+class Rectangle extends Shape
+{
+  private $width;
+  private $heigth;
+
+  public function __construct($name, $heigth, $width)
+  {
+    parent::__construct($name);
+    $this->heigth = $heigth;
+    $this->width = $width;
+  }
+
+  public function calculateArea()
+  {
+    return $this->width * $this->heigth;
+  }
+}
+
+$circle = new Circle("Circle", 3.5);
+var_dump($circle);
+echo "<br />";
+echo "Circle area: " . $circle->calculateArea();
 echo "<br /><br />";
-var_dump($article_one);
-echo "<br /><br />";
-var_dump($article_two);
-echo "<br /><br />";
-var_dump($article_one->isPublished());
-echo "<br /><br />";
-var_dump($article_two->isPublished());
+
+$rectangle = new Rectangle("Rectangle", 10, 7);
+var_dump($rectangle);
+echo "<br />";
+echo "Rectangle area: " . $rectangle->calculateArea();
