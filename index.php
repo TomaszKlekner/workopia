@@ -45,3 +45,21 @@ class Admin extends User
 $admin_01 = new Admin("Tom Smith", "tom@email.com", 5);
 
 $admin_01->login();
+
+// Static Members and Methods
+class MathUtility
+{
+  public static $pi = 3.14;
+
+  public static function add(...$numbers)
+  {
+    return array_sum($numbers);
+  }
+}
+
+// Scope Resolution Operator (::)
+echo MathUtility::$pi;
+
+echo "<br />";
+
+echo MathUtility::add(1, 2, 3);
