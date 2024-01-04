@@ -1,66 +1,85 @@
 <?php
 
-// Abstract Classes
-abstract class Shape
+// Interface
+interface ContentInterface
 {
-  protected $name;
+  public function display();
+  public function edit();
+}
 
-  // Abstract method
-  abstract public function calculateArea();
-
-  public function __construct($name)
+class Article implements ContentInterface
+{
+  private $title;
+  private $content;
+  public function __construct($title, $content)
   {
-    $this->name = $name;
+    $this->title = $title;
+    $this->content = $content;
+  }
+  public function display()
+  {
+    echo "<h2>{$this->title}</h2>";
+    echo "<p>{$this->content}</p>";
   }
 
-  // Concrete method
-  public function getName()
+  public function edit()
   {
-    return $this->name;
+    echo "Editing the article '{$this->title}'";
   }
 }
 
-class Circle extends Shape
+class Video implements ContentInterface
 {
-  private $radius;
+  private $title;
+  private $url;
 
-  public function __construct($name, $radius)
+  public function __construct($title, $url)
   {
-    parent::__construct($name);
-    $this->radius = $radius;
+    $this->title = $title;
+    $this->url = $url;
   }
 
-  public function calculateArea()
+  public function display()
   {
-    return pi() * pow($this->radius, 2);
+    echo "<h2>{$this->title}</h2>";
+    echo "<iframe  width='400' height='400' src='{$this->url}'></iframe>";
+  }
+
+  public function edit()
+  {
+    echo "Editing the video '{$this->title}'";
   }
 }
 
-class Rectangle extends Shape
-{
-  private $width;
-  private $heigth;
+$article = new Article("Article One", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, deserunt.");
 
-  public function __construct($name, $heigth, $width)
-  {
-    parent::__construct($name);
-    $this->heigth = $heigth;
-    $this->width = $width;
-  }
+$video = new Video("Video One", "https://www.youtube.com/embed/BUCiSSyIGGU")
 
-  public function calculateArea()
-  {
-    return $this->width * $this->heigth;
-  }
-}
+?>
 
-$circle = new Circle("Circle", 3.5);
-var_dump($circle);
-echo "<br />";
-echo "Circle area: " . $circle->calculateArea();
-echo "<br /><br />";
+<!DOCTYPE html>
+<html lang="en">
 
-$rectangle = new Rectangle("Rectangle", 10, 7);
-var_dump($rectangle);
-echo "<br />";
-echo "Rectangle area: " . $rectangle->calculateArea();
+<head>
+  <meta charset="UTF-8">
+  <meta title="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>PHP From Scratch</title>
+</head>
+
+<body class="bg-gray-100">
+  <header class="bg-blue-500 text-white p-4">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-semibold">PHP From Scratch</h1>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-4 mt-4 col-auto">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <p class="inline-block text-l mb-4">
+        <?php $video->display(); ?>
+      </p>
+    </div>
+</body>
+
+</html>
