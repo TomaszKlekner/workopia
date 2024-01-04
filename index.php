@@ -2,64 +2,40 @@
 
 // Object Oriented Programming
 
-// Class example
-class User
+// Challenge 1
+class Article
 {
-  public $name;
-  public $email;
-  protected $status = 'active';
+  private $title;
+  private $content;
+  private $published = false;
 
-  public function __construct($name, $email)
+
+  function __construct($title, $content)
   {
-    $this->name = $name;
-    $this->email = $email;
+    $this->title = $title;
+    $this->content = $content;
   }
 
-  public function login()
+  function publish()
   {
-    echo $this->name . " logged in.<br />";
+    return $this->published = true;
+  }
+
+  function isPublished()
+  {
+    return $this->published;
   }
 }
 
-class Admin extends User
-{
-  public $level;
+$article_one = new Article("Article One", "Lorem ipsum, dolor sit amet consectetur adipisicing elit.");
+$article_two = new Article("Article Two", "Voluptate praesentium omnis corporis necessitatibus?");
 
-  public function __construct($name, $email, $level)
-  {
-    $this->level = $level;
-    parent::__construct($name, $email);
-  }
-
-  public function login()
-  {
-    echo 'Admin ' . $this->name . " logged in.<br />";
-  }
-
-  public function getStatus()
-  {
-    echo $this->status;
-  }
-}
-
-$admin_01 = new Admin("Tom Smith", "tom@email.com", 5);
-
-$admin_01->login();
-
-// Static Members and Methods
-class MathUtility
-{
-  public static $pi = 3.14;
-
-  public static function add(...$numbers)
-  {
-    return array_sum($numbers);
-  }
-}
-
-// Scope Resolution Operator (::)
-echo MathUtility::$pi;
-
-echo "<br />";
-
-echo MathUtility::add(1, 2, 3);
+$article_one->publish();
+echo "<br /><br />";
+var_dump($article_one);
+echo "<br /><br />";
+var_dump($article_two);
+echo "<br /><br />";
+var_dump($article_one->isPublished());
+echo "<br /><br />";
+var_dump($article_two->isPublished());
