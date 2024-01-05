@@ -1,59 +1,18 @@
 <?php
 
-// Interface
-interface ContentInterface
-{
-  public function display();
-  public function edit();
-}
+// Super Globals - are very practical, but if you are not careful, they can be a source of security vulnerabilities
 
-class Article implements ContentInterface
-{
-  private $title;
-  private $content;
-  public function __construct($title, $content)
-  {
-    $this->title = $title;
-    $this->content = $content;
-  }
-  public function display()
-  {
-    echo "<h2>{$this->title}</h2>";
-    echo "<p>{$this->content}</p>";
-  }
+// Associative arrays
+// $_GLOBALS - References variables in the global scope
+// $_SERVER - Contains info about the server line hostname, file, path, etc.
+// $_GET - Variables passed to the script via query params and GET forms
+// $_POST - Variables passed to the script via POST forms
+// $_FILES - Items uploaded to current script
+// $_COOKIE - Variables passed to the script via HTTP cookies
+// $_SESSION - Session variables available to the script
+// $_REQUEST - Contains the contents of $_GET, $_POST and $_COOKIE - is not recommended to use
+// $_ENV - Variables passed to the script via environment method
 
-  public function edit()
-  {
-    echo "Editing the article '{$this->title}'";
-  }
-}
-
-class Video implements ContentInterface
-{
-  private $title;
-  private $url;
-
-  public function __construct($title, $url)
-  {
-    $this->title = $title;
-    $this->url = $url;
-  }
-
-  public function display()
-  {
-    echo "<h2>{$this->title}</h2>";
-    echo "<iframe  width='400' height='400' src='{$this->url}'></iframe>";
-  }
-
-  public function edit()
-  {
-    echo "Editing the video '{$this->title}'";
-  }
-}
-
-$article = new Article("Article One", "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, deserunt.");
-
-$video = new Video("Video One", "https://www.youtube.com/embed/BUCiSSyIGGU")
 
 ?>
 
@@ -62,7 +21,7 @@ $video = new Video("Video One", "https://www.youtube.com/embed/BUCiSSyIGGU")
 
 <head>
   <meta charset="UTF-8">
-  <meta title="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>PHP From Scratch</title>
 </head>
@@ -75,10 +34,23 @@ $video = new Video("Video One", "https://www.youtube.com/embed/BUCiSSyIGGU")
   </header>
 
   <div class="container mx-auto p-4 mt-4 col-auto">
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <p class="inline-block text-l mb-4">
-        <?php $video->display(); ?>
-      </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Heading</h2>
+        <p class="inline-block text-l mb-4">Paragraph</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Heading</h2>
+        <p class="inline-block text-l mb-4">Paragraph</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Heading</h2>
+        <p class="inline-block text-l mb-4">Paragraph</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Heading</h2>
+        <p class="inline-block text-l mb-4">Paragraph</p>
+      </div>
     </div>
 </body>
 
