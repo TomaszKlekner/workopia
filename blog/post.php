@@ -66,6 +66,16 @@ $post = $stmt->fetch();
           <a class="mt-4" href="index.php">Go Back</a>
         </div>
       </div>
+
+      <!-- Delete Form -->
+      <form action="delete.php" method="post" class="my-6">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="id" value="<?= $post['id'] ?>">
+        <button type="submit" name="submit" class="bg-red-500 text-white px-4 py-2 rounded
+        hover:bg-red-600 focus:outline-none">
+          Delete Post
+        </button>
+      </form>
     </div>
   </div>
 </body>
