@@ -51,8 +51,14 @@ $posts = $stmt->fetchAll();
             <p class="text-gray-700 text-lg mt-2"><?= $post['body'] ?></p>
           </div>
         </div>
-      <?php endforeach ?>
       </div>
+    <?php endforeach ?>
+  </div>
+
+  <div class="container mx-auto p-4 mt-4">
+    <a class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-nont" href="create.php">
+      Create Post
+    </a>
   </div>
 </body>
 
