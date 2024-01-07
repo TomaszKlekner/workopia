@@ -55,7 +55,7 @@ $post = $stmt->fetch();
 
   <div class="container mx-auto p-4 mt-4">
     <div class="md my-4">
-      <div class="rounded-lg shadow-md">
+      <div class="rounded-lg shadow-md mb-8">
         <div class="p-4">
           <h2 class="text-xl font-semibold">
             <?= $post['title'] ?>
@@ -66,17 +66,19 @@ $post = $stmt->fetch();
           <a class="mt-4" href="index.php">Go Back</a>
         </div>
       </div>
-
-      <!-- Delete Form -->
-      <form action="delete.php" method="post" class="my-6">
-        <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="id" value="<?= $post['id'] ?>">
-        <button type="submit" name="submit" class="bg-red-500 text-white px-4 py-2 rounded
-        hover:bg-red-600 focus:outline-none">
-          Delete Post
-        </button>
-      </form>
     </div>
+
+    <!-- Edit Button -->
+    <a class="bg-green-500 block text-center flex-initial w-32 text-white px-4 py-2 rounded
+        hover:bg-green-600 focus:outline-none w-full" href="edit.php?id=<?= $post['id'] ?>">Edit</a>
+
+    <!-- Delete Form -->
+    <form action="delete.php" method="post" class="my-6">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="id" value="<?= $post['id'] ?>">
+      <button type="submit" name="submit" class="bg-red-500 block flex-initial w-32 text-white px-4 py-2 rounded
+        hover:bg-red-600 focus:outline-none w-full">Delete</button>
+    </form>
   </div>
 </body>
 
