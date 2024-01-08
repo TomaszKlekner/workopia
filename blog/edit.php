@@ -20,18 +20,18 @@ $stmt->execute($params);
 $post = $stmt->fetch();
 
 // Check for form submit
-$isPutRequest = $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_method'] ?? '') === 'put' ;
+$isPutRequest = $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_method'] ?? '') === 'put';
 
-if($isPutRequest) {
+if ($isPutRequest) {
   $title = htmlspecialchars($_POST['title'] ?? '');
   $body = htmlspecialchars($_POST['body'] ?? '');
 
   $sql = 'UPDATE blog.posts SET title = :title, body = :body WHERE id = :id';
-  $stms = $pdo->prepare($sql);
+  $stmt = $pdo->prepare($sql);
   $params = [
     'title' => $title,
     'body' => $body,
-    'id' => $id,
+    'id' => $id
   ];
   $stmt->execute($params);
 

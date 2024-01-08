@@ -1,7 +1,7 @@
 <?php
 require 'database.php';
 
-// Chec for the correct method (POST) and if the form has been submitted
+// Check for the correct method (POST) and if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $title = htmlspecialchars($_POST['title']);
   $body = htmlspecialchars($_POST['body']);
