@@ -14,13 +14,15 @@ function basePath($path = "")
  * Load a view
  * 
  * @param string $name
+ * @param string $data
  * @return void
  */
-function loadView($name)
+function loadView($name, $data = [])
 {
   $viewPath = basePath("views/{$name}.view.php");
 
-  if(file_exists($viewPath)) {
+  if (file_exists($viewPath)) {
+    extract($data);
     require $viewPath;
   } else {
     echo "View '{$name}' not found!";
@@ -32,11 +34,12 @@ function loadView($name)
  * @param string $name
  * @return void
  */
-function loadPartial($name) {
+function loadPartial($name)
+{
   $partialPath = basePath("views/partials/{$name}.php");
-  if(file_exists($partialPath)) {
+  if (file_exists($partialPath)) {
     require $partialPath;
-  }else {
+  } else {
     echo "Partial '{$name}' not found!";
   }
 }
@@ -46,7 +49,8 @@ function loadPartial($name) {
  * @param mixed $value
  * @return void
  */
-function inspect($value) {
+function inspect($value)
+{
   echo '<pre>';
   var_dump($value);
   echo '</pre>';
@@ -57,7 +61,8 @@ function inspect($value) {
  * @param mixed $value
  * @return void
  */
-function inspectAndDie($value) {
+function inspectAndDie($value)
+{
   echo '<pre>';
   die(var_dump($value));
   echo '</pre>';
