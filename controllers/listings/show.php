@@ -1,0 +1,16 @@
+<?php
+$config = require basePath('config/db.php');
+$db = new Database($config);
+
+// Get the listing id passed as a query parameter
+$id = $_GET['id'] ?? "";
+
+$params = [
+  'id' => $id
+];
+
+$listing = $db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+loadView('listings/show', [
+  'listing' => $listing
+]);
