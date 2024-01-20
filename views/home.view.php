@@ -15,54 +15,29 @@ loadPartial("top-banner");
       <?php foreach ($listings as $listing) : ?>
         <div class="rounded-lg shadow-md bg-white">
           <div class="p-4">
-            <h2 class="text-xl font-semibold"><?= $listing['title'] ?></h2>
-            <p class="text-gray-700 text-lg mt-2"><?= $listing['description'] ?></p>
+            <h2 class="text-xl font-semibold"><?= $listing->title ?></h2>
+            <p class="text-gray-700 text-lg mt-2"><?= $listing->description ?></p>
             <ul class="my-4 bg-gray-100 p-4 rounded">
-              <li class="mb-2"><strong>Salary: </strong>$<?= $listing['salary'] ?></li>
+              <li class="mb-2"><strong>Salary: </strong><?= formatSalary($listing->salary) ?></li>
               <li class="mb-2">
-                <strong>Location:</strong> <?= $listing['city'] ?>
+                <strong>Location:</strong> <?= $listing->city ?>
               </li>
               <li class="mb-2">
                 <strong>Tags:</strong>
-                <?= $listing['tags'] ?>
+                <?= $listing->tags ?>
             </ul>
-            <a href="/listing/<?= $listing['id'] ?>" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+            <a href="/listing/<?= $listing->id ?>" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
               Details
             </a>
           </div>
         </div>
       <?php endforeach; ?>
-
-      <div class="rounded-lg shadow-md bg-white">
-        <div class="p-4">
-          <h2 class="text-xl font-semibold">Data Scientist</h2>
-          <p class="text-gray-700 text-lg mt-2">
-            We're looking for a Data Scientist to analyze complex data and
-            generate insights.
-          </p>
-          <ul class="my-4 bg-gray-100 p-4 rounded">
-            <li class="mb-2"><strong>Salary:</strong> $90,000</li>
-            <li class="mb-2">
-              <strong>Location:</strong> Seattle
-              <span class="text-xs bg-blue-500 text-white rounded-full px-2 py-1 ml-2">Remote</span>
-            </li>
-            <li class="mb-2">
-              <strong>Tags:</strong> <span>Data Science</span>,
-              <span>Machine Learning</span>
-            </li>
-          </ul>
-          <a href="details.html" class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
-            Details
-          </a>
-        </div>
-      </div>
     </div>
     <a href="/listings" class="block text-xl text-center">
       <i class="fa fa-arrow-alt-circle-right"></i>
       Show All Jobs
     </a>
 </section>
-
 
 <?php
 loadPartial("bottom-banner");
