@@ -1,0 +1,16 @@
+{
+  "name": "tomaszklekner/workopia",
+  "description": "Job listing application",
+  "authors": [
+    {
+      "name": "Tomasz Klekner",
+      "email": "tomasz.klekner@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
