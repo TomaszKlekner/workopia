@@ -22,4 +22,25 @@ class ListingController
       'listings' => $listings
     ]);
   }
+
+  public function create()
+  {
+    loadView('listings/create');
+  }
+
+  public function show()
+  {
+    // Get the listing id passed as a query parameter
+    $id = $_GET['id'] ?? "";
+
+    $params = [
+      'id' => $id
+    ];
+
+    $listing = $this->db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+    loadView('listings/show', [
+      'listing' => $listing
+    ]);
+  }
 }
