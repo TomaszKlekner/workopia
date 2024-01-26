@@ -14,6 +14,11 @@ class ListingController
     $this->db = new Database($config);
   }
 
+  /**
+   * Show all listings
+   *
+   * @return void
+   */
   public function index()
   {
     $listings = $this->db->query('SELECT * FROM workopia.listings LIMIT 6')->fetchAll();
@@ -23,11 +28,21 @@ class ListingController
     ]);
   }
 
+  /**
+   * Show the create listing form
+   *
+   * @return void
+   */
   public function create()
   {
     loadView('listings/create');
   }
 
+  /**
+   * Show the listing details view
+   *
+   * @return void
+   */
   public function show()
   {
     // Get the listing id passed as a query parameter
