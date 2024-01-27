@@ -43,16 +43,22 @@ class ListingController
    *
    * @return void
    */
-  public function show()
+  public function show($params)
   {
     // Get the listing id passed as a query parameter
-    $id = $_GET['id'] ?? "";
+    $id = $params['id'] ?? "";
 
     $params = [
       'id' => $id
     ];
 
     $listing = $this->db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+    // Check if listing exists
+    if (!$listing) {
+      ErrorController::notFound('Listing not found!');
+      return;
+    }
 
     loadView('listings/show', [
       'listing' => $listing

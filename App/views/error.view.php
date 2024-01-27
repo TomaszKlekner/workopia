@@ -7,6 +7,7 @@ loadPartial("navbar");
   <div class="container grow-0 mx-auto p-4 my-4">
     <div class="text-center text-3xl mb-4 font-bold border border-gray-300 p-3"><?= $status ?></div>
     <p class="text-center text-2xl mb-4"><?= $message ?></p>
+    <a class="block text-center" href="/listings">Go Back To Listings</a>
   </div>
 </section>
 
