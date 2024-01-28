@@ -22,7 +22,7 @@ class ListingController
    */
   public function index()
   {
-    $listings = $this->db->query('SELECT * FROM workopia.listings LIMIT 6')->fetchAll();
+    $listings = $this->db->query('SELECT * FROM workopia.listings LIMIT 12')->fetchAll();
 
     loadView('listings/index', [
       'listings' => $listings
@@ -47,7 +47,7 @@ class ListingController
   public function store()
   {
     // Create a list of accepted form fields
-    $allowedFields = ["title", "description", "salary", "requirements", "benefits", "company", "address", "city", "state", "phone", "email"];
+    $allowedFields = ["title", "description", "salary", "requirements", "benefits", "tags", "company", "address", "city", "state", "phone", "email"];
     // Confirm only allowed fields are being sent in the POST
     $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
     // Hardcode the user id for now
@@ -71,7 +71,30 @@ class ListingController
       loadView('listings/create', ['errors' => $errors, 'listing' => $newListingData]);
     } {
       // Submit data
-      echo 'Success';
+
+      $fields = [];
+      foreach ($newListingData as $field => $value) {
+        $fields[] = $field;
+      }
+      $fields = implode(', ', $fields);
+
+      $values = [];
+      foreach ($newListingData as $field => $value) {
+        // Convert empty stringt to null
+        if ($value === '') {
+          $newListingData[$field] = null;
+        }
+        // Convert values to a placehoder
+        $values[] = ":" . $field;
+      }
+      $values = implode(', ', $values);
+
+      // Create the query
+      $query = "INSERT INTO workopia.listings ({$fields}) VALUES ({$values})";
+
+      $this->db->query($query, $newListingData);
+
+      redirect("/listings");
     }
   }
 
