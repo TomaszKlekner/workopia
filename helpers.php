@@ -79,3 +79,14 @@ function formatSalary($salary)
 {
   return '$' . number_format(floatval($salary));
 };
+
+/**
+ * Sanitaze Data
+ * 
+ * @param string $dirty
+ * @return string
+ */
+function sanitaze($dirty)
+{
+  return filter_var(trim($dirty), FILTER_SANITIZE_SPECIAL_CHARS);
+}
