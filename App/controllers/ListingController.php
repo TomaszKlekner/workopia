@@ -101,6 +101,7 @@ class ListingController
   /**
    * Show the listing details view
    *
+   * @param array $params
    * @return void
    */
   public function show($params)
@@ -123,5 +124,32 @@ class ListingController
     loadView('listings/show', [
       'listing' => $listing
     ]);
+  }
+
+  /**
+   * Delete a listing
+   * 
+   * @param array $params
+   * @return void
+   */
+  public function destroy($params)
+  {
+    $id = $params['id'];
+
+    $params = [
+      'id' => $id
+    ];
+
+    $listing = $this->db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+    // Check if listing exists
+    if (!$listing) {
+      ErrorController::notFound('Listing not found!');
+      return;
+    }
+
+    $this->db->query('DELETE FROM workopia.listings where id = :id', $params);
+
+    redirect('/listings');
   }
 }
