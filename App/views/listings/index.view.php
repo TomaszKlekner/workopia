@@ -10,12 +10,12 @@ loadPartial("top-banner");
     <div class="text-center text-3xl mb-4 font-bold border border-gray-300 p-3">
       Recent Jobs
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
       <?php foreach ($listings as $listing) : ?>
         <div class="rounded-lg shadow-md bg-white">
           <div class="p-4">
             <h2 class="text-xl font-semibold"><?= $listing->title ?></h2>
-            <p class="text-gray-700 text-lg mt-2"><?= $listing->description ?></p>
+            <p class="text-gray-700 text-lg mt-2"><?= substr($listing->description, 0, 120) . '...' ?></p>
             <ul class="my-4 bg-gray-100 p-4 rounded">
               <li class="mb-2"><strong>Salary: </strong><?= formatSalary($listing->salary) ?></li>
               <li class="mb-2">
