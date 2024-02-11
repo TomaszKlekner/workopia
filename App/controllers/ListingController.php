@@ -154,4 +154,32 @@ class ListingController
 
     redirect('/listings');
   }
+
+  /**
+   * Show the listing edit form
+   *
+   * @param array $params
+   * @return void
+   */
+  public function edit($params)
+  {
+    // Get the listing id passed as a query parameter
+    $id = $params['id'] ?? "";
+
+    $params = [
+      'id' => $id
+    ];
+
+    $listing = $this->db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+    // Check if listing exists
+    if (!$listing) {
+      ErrorController::notFound('Listing not found!');
+      return;
+    }
+
+    loadView('listings/edit', [
+      'listing' => $listing
+    ]);
+  }
 }
