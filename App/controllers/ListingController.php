@@ -69,9 +69,8 @@ class ListingController
     if (!empty($errors)) {
       // Reload view with errors
       loadView('listings/create', ['errors' => $errors, 'listing' => $newListingData]);
-    } {
+    } else {
       // Submit data
-
       $fields = [];
       foreach ($newListingData as $field => $value) {
         $fields[] = $field;
@@ -149,6 +148,9 @@ class ListingController
     }
 
     $this->db->query('DELETE FROM workopia.listings where id = :id', $params);
+
+    // Set flash message
+    $_SESSION['success_message'] = "Listing deleted successfully";
 
     redirect('/listings');
   }
