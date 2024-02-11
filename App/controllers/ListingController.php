@@ -93,7 +93,7 @@ class ListingController
 
       $this->db->query($query, $newListingData);
 
-      redirect("/listings");
+      redirect('/listings');
     }
   }
 
@@ -181,5 +181,74 @@ class ListingController
     loadView('listings/edit', [
       'listing' => $listing
     ]);
+  }
+
+  /**
+   * Update listing
+   * 
+   * @param array $params
+   * @return void
+   */
+  public function update($params)
+  {
+    // Get the listing id passed as a query parameter
+    $id = $params['id'] ?? "";
+
+    $params = [
+      'id' => $id
+    ];
+
+    $listing = $this->db->query('SELECT * FROM workopia.listings where id = :id', $params)->fetch();
+
+    // Check if listing exists
+    if (!$listing) {
+      ErrorController::notFound('Listing not found!');
+      return;
+    }
+
+    $allowedFields = ["title", "description", "salary", "requirements", "benefits", "tags", "company", "address", "city", "state", "phone", "email"];
+
+    $updateValues = [];
+
+    $updateValues = array_intersect_key($_POST, array_flip($allowedFields));
+
+    $updateValues = array_map('sanitaze', $updateValues);
+
+    $requiredFields = ['title', 'description', 'salary', 'email', 'city', 'state'];
+
+    $errors = [];
+
+    foreach ($requiredFields as $field) {
+      if (empty($updateValues[$field]) || !Validation::string($updateValues[$field])) {
+        $errors[$field] = ucfirst($field) . ' is required!';
+      }
+    }
+
+    if (!empty($errors)) {
+      loadView('listings/edit', [
+        'listing' => $listing,
+        'errors' => $errors
+      ]);
+      exit;
+    } else {
+      // Submit to databbase
+      $updateFields = [];
+
+      foreach (array_keys($updateValues) as $field) {
+        $updateFields[] = "{$field} = :{$field}";
+      }
+
+      $updateFields = implode(', ', $updateFields);
+
+      $updateQuery = "UPDATE workopia.listings SET $updateFields WHERE id = :id";
+
+      $updateValues['id'] = $id;
+
+      $this->db->query($updateQuery, $updateValues);
+
+      $_SESSION['success_message'] = 'Listing Updated';
+
+      redirect('/listings/' . $id);
+    }
   }
 }
