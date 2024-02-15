@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
+
 
 class UserController
 {
@@ -106,6 +108,17 @@ class UserController
     ];
 
     $this->db->query('INSERT INTO workopia.users (name, email, city, state, password) VALUES (:name, :email, :city, :state, :password)', $params);
+
+    // Create a user session
+    // Get the new user ID
+    $userId = $this->db->conn->lastInsertId();
+    Session::set('user', [
+      'id' => $userId,
+      'name' => $email,
+      'email' => $email,
+      'city' => $city,
+      'state' => $state,
+    ]);
 
     redirect('/');
   }
