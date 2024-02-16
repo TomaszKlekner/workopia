@@ -2,7 +2,9 @@
 
 use Framework\Session;
 
-$userName = explode(" ", Session::get('user')['name'])[0];
+if (Session::get('user')) {
+  $userName = explode(" ", Session::get('user')['name'])[0] ?? '';
+}
 
 ?>
 
