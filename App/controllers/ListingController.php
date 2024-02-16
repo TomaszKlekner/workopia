@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use Framework\Authorization;
 use Framework\Database;
+use Framework\Session;
 use Framework\Validation;
 
 class ListingController
@@ -22,7 +24,7 @@ class ListingController
    */
   public function index()
   {
-    $listings = $this->db->query('SELECT * FROM workopia.listings LIMIT 12')->fetchAll();
+    $listings = $this->db->query('SELECT * FROM workopia.listings ORDER BY created_at DESC LIMIT 12')->fetchAll();
 
     loadView('listings/index', [
       'listings' => $listings
@@ -51,7 +53,7 @@ class ListingController
     // Confirm only allowed fields are being sent in the POST
     $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
     // Hardcode the user id for now
-    $newListingData['user_id'] = 1;
+    $newListingData['user_id'] = Session::get('user')['id'];
     // Sanitaze incomming data by filtering special characters
     $newListingData = array_map('sanitaze',  $newListingData);
     // Check if required fields are in
@@ -145,6 +147,12 @@ class ListingController
     if (!$listing) {
       ErrorController::notFound('Listing not found!');
       return;
+    }
+
+    // Authorization
+    if (!Authorization::isOwner($listing->user_id)) {
+      $_SESSION['error_message'] = 'You are not authorize to delete this listing';
+      return redirect('/listings/' . $listing->id);
     }
 
     $this->db->query('DELETE FROM workopia.listings where id = :id', $params);
