@@ -114,11 +114,27 @@ class UserController
     $userId = $this->db->conn->lastInsertId();
     Session::set('user', [
       'id' => $userId,
-      'name' => $email,
+      'name' => $name,
       'email' => $email,
       'city' => $city,
       'state' => $state,
     ]);
+
+    redirect('/');
+  }
+
+  /**
+   * Logout user and kill session
+   * 
+   * @return void
+   */
+  public function logout()
+  {
+    Session::clearAll();
+
+    $params = session_get_cookie_params();
+    // Delete the cookie
+    setcookie('PHPSESSID', '', time() - 86400, $params['path'], $params['domain']);
 
     redirect('/');
   }
